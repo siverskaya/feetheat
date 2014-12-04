@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
-
+ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,6 +23,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 # Paperclip gem for easy image attachments/other stuff
 gem "paperclip", "~> 4.2"
+# setting up gems for production environment (for Heroku)
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
+# SQLite gem for development and test environments
+group :development, :test do
+	gem 'sqlite3'
+end
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
