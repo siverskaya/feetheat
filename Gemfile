@@ -27,6 +27,8 @@ gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"
 # Figaro to protect sensitive data when committing/pushing to GitHub
 gem "figaro"
+# Devise for facilitating user account creation and logins
+gem 'devise'
 
 # setting up gems for production environment (for Heroku)
 group :production do
