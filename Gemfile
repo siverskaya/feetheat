@@ -23,6 +23,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 # Paperclip gem for easy image attachments/other stuff
 gem "paperclip", "~> 4.2"
+# Gem to store images uploaded via Paperclip on Dropbox
+gem "paperclip-dropbox", ">= 1.1.7"
+# Figaro to protect sensitive data when committing/pushing to GitHub
+gem "figaro"
+
 # setting up gems for production environment (for Heroku)
 group :production do
 	gem 'pg'
@@ -33,6 +38,7 @@ end
 group :development, :test do
 	gem 'sqlite3'
 end
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
