@@ -11,10 +11,12 @@ class Listing < ActiveRecord::Base
     # validating image uploads to ensure that they are indeed images
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-    # ensuring all fields in each new listing are filled out, including images
+    # ensure all fields in each new listing are filled out
     validates :name, :description, :price, presence: true
-
+    # ensure that values in price field are numbers and non-negative
     validates :price, numericality: {greater_than: 0}
-
+    # ensure that an image is attached to each listing
     validates_attachment_presence :image
+
+    belongs_to :user
 end
