@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :listings
 
   get 'pages/about'
-
   get 'pages/contact'
+  # creating page for sellers to show only their listings
+  get 'seller' => "listings#seller"
 
   root 'listings#index'
 
