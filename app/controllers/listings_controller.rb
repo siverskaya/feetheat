@@ -33,6 +33,24 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
 
+    # Make sure Stripe recognizes our account via our API key
+    # only if we have not yet gotten user's bank account info (recipient field blank)
+    if current_user.recipient.blank?
+      Stripe.api_key = ENV["STRIPE_API_KEY"]
+      token = params[:stripeToken]
+
+      # Parameters Stripe requires for bank accounts
+      recipient = Stripe::Recipient.create(
+        :name => current_user.name, 
+        :type => "individual",
+        :bank_account => token
+        )
+    end
+    
+    # Added recipient field to user model, populate with current user
+    current_user.recipient = recipient.id
+    current_user.save
+
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
