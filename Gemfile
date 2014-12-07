@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://code.stripe.com'
 ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -21,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # Including Bootstrap (SASS) for Rails
 gem 'bootstrap-sass', '~> 3.3.1'
-# Paperclip gem for easy image attachments/other stuff
+# Paperclip gem for easy image attachments and uploads/other related stuff
 gem "paperclip", "~> 4.2"
 # Gem to store images uploaded via Paperclip on Dropbox
 gem "paperclip-dropbox", ">= 1.1.7"
@@ -29,6 +30,8 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 # Devise for facilitating user account creation and logins
 gem 'devise'
+# Stripe gem for access to the Stripe API and payment processing
+gem 'stripe'
 
 # setting up gems for production environment (for Heroku)
 group :production do
