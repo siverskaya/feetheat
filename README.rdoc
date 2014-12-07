@@ -1,28 +1,29 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Feet Heat, a marketplace for people to buy and sell sneakers and streetwear online! Coming soon (TM) to iOS.
 
-Things you may want to cover:
+Built with Ruby version 2.1.5 and Rails version 4.1.8. SQLite 3 in development. Also featuring Sass-rails 4.0.3, Coffee-Rails 4.0.0, Jquery-Rails,
+Twitter Bootstrap (sass). Paperclip, Figaro, Devise, used for image attachments and uploads, encryption of secret keys,
+and user account functionality respectively. Utilized the Dropbox API for image storage in production.
+Stripe API for payments, fully functional as of today for processing credit cards and transferring payment to sellers.
 
-* Ruby version
+Hosted live on Heroku at https://feetheat-2014.herokuapp.com/ using PostgreSQL in production. Server may be slow
+at times, especially on wakeup, because it is currently hosted on only one dyno (Heroku's free offering).
 
-* System dependencies
+Core functionality includes creating an account associated with your name, email, and password and basic related actions
+(logging in/out, editing your user profile). Static pages include the home page, which doubles as the main Listings page,
+the extremely bare-bones About and Contact pages, My Listings, Edit Profile, Sales History, Order (Purchase) History
+for logged in users. Also includes the ability to create a new listing and/or place an order for signed in users;
+the order and transaction functionality is live, using the Stripe API and CoffeeScript to set up validation logic
+and ensure that credit card information does not touch our servers, rather going straight to Stripe.  
 
-* Configuration
+On creating a new listing, prospective sellers are asked to input their bank account information in order for payments (95% of
+listing price) to be transferred to their accounts afterward through Stripe. Listings cannot be created without
+filling out all fields, including uploading an image of the item in question; error messages will indicate as much.
+Signed out users can only view listings; they cannot edit their profiles, view histories, create listings,
+or place orders.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Users can create as many listings as they wish. Credit card and bank account information for buyers and sellers
+must be valid, but for testing purposes, pseudo-valid credit card and bank account numbers can be found below:
+Credit card: 4242 4242 4242 4242 -- any 3-digit number is valid as a CVV code, ditto any expiration date in the future
+Country code: US only; Routing number: 111000025; Account number: 000123456789
