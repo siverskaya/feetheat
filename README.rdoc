@@ -2,7 +2,7 @@
 
 Welcome to Feet Heat, a marketplace for people to buy and sell sneakers and streetwear online! Coming soon (TM) to iOS.
 
-## Implementation Details
+*** Documentation / Implementation details ***
 
 Built with Ruby version 2.1.5 and Rails version 4.1.8. SQLite 3 in development. Also featuring Sass-rails 4.0.3, Coffee-Rails 4.0.0, Jquery-Rails,
 Twitter Bootstrap (sass). Paperclip, Figaro, Devise, used for image attachments and uploads, encryption of secret keys,
