@@ -1,0 +1,42 @@
+*** DESIGN DOC ***
+
+I decided to go with Ruby on Rails because I wanted to build something with a fair amount of functionality as quickly
+as possible while learning a language and framework I plan to use going forward. Rails does a lot of grunt work for you,
+especially the scaffolding with respect to databases in development, making migrations extremely easy (just a rails
+generate and rake db:migrate command away). It also integrates very well and seamlessly with Stripe's API, deployment
+via Heroku -- I knew I wanted to host the prototype live on the web and get some experience with a real hosting
+platform -- and various Ruby gems like Devise, Figaro, and Paperclip were perfect for a lot of the functionality I
+wanted, namely user accounts and profiles, uploading image attachments for listings, and being able to upload sensitive
+data (API keys, etc.) to GitHub publicly without worrying. I like Ruby's syntax much more than most other languages I
+looked at (save maybe Python), but the community around Ruby and Rails for web apps is what made the decision easiest.
+There is an incredible amount of support online, especially on sites like StackOverflow, but in lots of other places too,
+that helped a ton with the myriad bugs and issues I faced over the past couple weeks.
+
+I went with CoffeeScript for the small amount of JavaScript-related code I needed to write mostly because of 
+syntactic sugar -- it compiles to JavaScript anyway, but plain JavaScript seems really messy. Bootstrap was a fairly
+obvious choice for styling as we had used it in problem sets already and its documentation is great. Its forms, navs/
+navbars, buttons, alerts/error messages, etc., are all modern and well-designed, and made my life so much easier,
+cutting the amount of completely custom CSS I had to write by probably upwards of 90% while still being extremely
+easy to understand and intuitive. 
+
+SQLite turned out to be a good choice for a development database because it was extremely easy to get started with via
+Rails and the command line (and edit/create migrations for later on), and also has a GUI interface tool similar to 
+PhpMyAdmin as an OSX desktop app. Heroku automatically uses PostgresSQL in production, which I had wanted to do anyway
+having heard lots of good things about it, but it is a fair bit more complicated -- I mostly only dealt with it through
+the command line as well. Heroku seemed to be another fairly obvious choice for Rails as they seem to be meant for one
+another, with deployment being as easy as installing the Heroku toolbelt, spinning up a dyno, linking my Git repo,
+and typing "git push heroku master." On that note, learning Git was great, and knowing that I could revert back to
+prior versions of my code when hitting roadblocks was comforting. Keeping track of updates through commit messages, etc.
+is also handy, and of course its main draw is in being able to easily share with others in the future.
+
+I chose Stripe for payment processing because it was extremely straightforward to work with their API to set up
+payment/credit card processing and transfer payments to sellers, and their documentation is very thorough and clear.
+I didn't run into any major issues with setting up payments, which was something I was definitely confused about going
+into this, so that was great, and Stripe does a lot of leg work for us to make it seem easy.
+
+Beyond all of this, my project is a pretty standard, fairly bare-bones MVC web app somewhat similar to those we've already
+looked at -- I tried to make my code as modular, clean, and self-contained as possible, keeping things pretty separate.
+That's another benefit of Rails in my mind, in that it forces you to do things mostly a certain way, which as a total
+beginner to programming is pretty helpful, because I would have done much worse had I been forced to organize everything
+totally on my own. I had to go through a lot of tutorials and read a lot of StackOverflow (and random blogs)
+to figure out how to do a lot of this stuff, but it ended up being really enjoyable, and I learned a ton!
