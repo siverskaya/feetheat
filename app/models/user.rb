@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # link User model to the relevant listing(s) as well as to orders, as a buyer and as a seller
   has_many :listings, dependent: :destroy
+  has_many :sales, class_name: "Order", foreign_key: "seller_id"
+  has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
 end
