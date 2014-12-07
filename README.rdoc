@@ -13,9 +13,15 @@ All .rb (Ruby) controller files can be found at feetheat/app/controllers. JavaSc
 configuring the Stripe API and validating credit card and bank account info along with displaying forms and errors is
 found at feetheat/app/assets/javascripts. Custom styling/CSS is found at feetheat/app/assets/stylesheets/custom.css.scss
 
-All models for the database and its three main tables (listings, orders, users) are found at feetheat/app/models.
+All models for the database and its three main tables -- 1) listings, 2) orders, 3) users -- are found at feetheat/app/models.
 Includes associations/relationships between the tables (one user can have many listings, each listing is tied to only
-one user, etc.) and validation of table data as well as image content.
+one user, etc.) and validation of table data as well as image content. All three tables are inter-connected via integer IDs,
+and real names (asked for on signup). The users table stores user id, email, encrypted password, sign in count, current and last
+sign in by date and IP, real name, and recipient ID (used for transferring payments to sellers via Stripe). The 
+listings table stores listing id, listing name, listing description, listing price, date created and updated, listing image
+file name, image content type, image file size, and user id (relation to users table). The orders table stores order id, buyer address, 
+buyer city, buyer state, date created, date updated, listing id (relation to listings table), buyer id, and seller id 
+(relation to users table).
 
 All views are found at feetheat/app/views, broken up into views/devise for most user account code pertaining to the
 Devise gem (views/passwords, views/registrations, views/sessions, views/shared, views/unlocks); layouts for rendering
