@@ -3,13 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :listings do
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
 
   get 'pages/about'
   get 'pages/contact'
-  # creating page for sellers to show only their listings
+  # create page for sellers to show only their listings
   get 'seller' => "listings#seller"
+  # create pages for buyers and sellers to view order histories
+  get 'sales' => "orders#sales"
+  get 'purchases' => "orders#purchases"
 
   root 'listings#index'
 
