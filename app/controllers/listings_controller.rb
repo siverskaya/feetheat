@@ -45,11 +45,12 @@ class ListingsController < ApplicationController
         :type => "individual",
         :bank_account => token
         )
+
+      # Added recipient field to user model, populate with current user
+      current_user.recipient = recipient.id
+      current_user.save
+
     end
-    
-    # Added recipient field to user model, populate with current user
-    current_user.recipient = recipient.id
-    current_user.save
 
     respond_to do |format|
       if @listing.save
