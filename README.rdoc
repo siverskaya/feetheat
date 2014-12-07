@@ -2,12 +2,36 @@
 
 Welcome to Feet Heat, a marketplace for people to buy and sell sneakers and streetwear online! Coming soon (TM) to iOS.
 
+## Implementation Details
+
 Built with Ruby version 2.1.5 and Rails version 4.1.8. SQLite 3 in development. Also featuring Sass-rails 4.0.3, Coffee-Rails 4.0.0, Jquery-Rails,
 Twitter Bootstrap (sass). Paperclip, Figaro, Devise, used for image attachments and uploads, encryption of secret keys,
 and user account functionality respectively. Utilized the Dropbox API for image storage in production.
 Stripe API for payments, fully functional as of today for processing credit cards and transferring payment to sellers.
 
-Hosted live on Heroku at https://feetheat-2014.herokuapp.com/ using PostgreSQL in production. Server may be slow
+All .rb (Ruby) controller files can be found at feetheat/app/controllers. JavaScript and CoffeeScript used for 
+configuring the Stripe API and validating credit card and bank account info along with displaying forms and errors is
+found at feetheat/app/assets/javascripts. Custom styling/CSS is found at feetheat/app/assets/stylesheets/custom.css.scss
+
+All models for the database and its three main tables (listings, orders, users) are found at feetheat/app/models.
+Includes associations/relationships between the tables (one user can have many listings, each listing is tied to only
+one user, etc.) and validation of table data as well as image content.
+
+All views are found at feetheat/app/views, broken up into views/devise for most user account code pertaining to the
+Devise gem (views/passwords, views/registrations, views/sessions, views/shared, views/unlocks); layouts for rendering
+the header (navbar using Bootstrap, including dropdown links) and footer as well as some error handling, linking
+to CSS and JavaScript files above, and meta tags for Stripe; listings for the home pageall forms related to listings,
+new listings, edits, showing a listings's own page, a seller's particular listings; orders for all forms pertaining
+to placing orders, generating a new order, and viewing purchase and sales histories for logged in users.
+
+feetheat/config contains Ruby code setting up development and production environments; config/locales/devise.en.yml
+contains most success and error/other status message text; API keys and tokens for Dropbox and Stripe are stored in 
+application.yml and dropbox.yml. New pages and URLs are configured via config/routes.rb, including setting the home
+page to listings#index (root).
+
+Finally, the Gemfile contains all gems used for this app (mostly mentioned above) with short related comments for most.
+
+The app is hosted live on Heroku at https://feetheat-2014.herokuapp.com/ using PostgreSQL in production. Server may be slow
 at times, especially on wakeup, because it is currently hosted on only one dyno (Heroku's free offering).
 
 Core functionality includes creating an account associated with your name, email, and password and basic related actions
@@ -25,5 +49,7 @@ or place orders.
 
 Users can create as many listings as they wish. Credit card and bank account information for buyers and sellers
 must be valid, but for testing purposes, pseudo-valid credit card and bank account numbers can be found below:
-Credit card: 4242 4242 4242 4242 -- any 3-digit number is valid as a CVV code, ditto any expiration date in the future
+
+Credit card: 4242 4242 4242 4242; any 3-digit number valid as a CVV code; ditto any expiration date in the future
+
 Country code: US only; Routing number: 111000025; Account number: 000123456789
